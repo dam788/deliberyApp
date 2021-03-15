@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { GlobalStyle } from './Styles/GlobalStyle';
+import { Navbar } from './components/Navbar/Navbar';
+import { Banner } from './components/Banner/Banner';
+import { Menu } from './components/Menu/Menu';
+import { FoodDialog } from './components/FoodDialog/FoodDialog';
+import { useOpenFood } from './hooks/useOpenFood';
+import { Orders } from './components/Orders/Orders';
 
 function App() {
+  const openFood = useOpenFood();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <FoodDialog {...openFood} />
+      <Navbar />
+      <Orders />
+      <Banner>
+        <h1>La mejor comida del Valle</h1>
+        <p>Pedi Fácil y Rápido!</p>
+      </Banner>
+      <Menu {...openFood} />
+    </>
   );
 }
 
