@@ -10,6 +10,7 @@ import { formatPrice } from '../../utils/formatPrice';
 import { useSelector, useDispatch } from 'react-redux';
 import { QuantityManage } from '../QuantityManage/QuantityManage';
 import * as cartActions from '../../redux/cart/cart-action';
+import { Link } from 'react-router-dom';
 
 const OrderStyled = styled.div`
   position: fixed;
@@ -73,7 +74,8 @@ export const Orders = () => {
     return acc + item.price * item.quantity;
   }, 0);
   const handlerToggle = () => dispatch(cartActions.toggleCartHidden());
-
+  const style = { display: 'flex', width: '100%' }
+ 
   return (
     <>
       {hidden && <DialogShadow onClick={handlerToggle} />}
@@ -92,7 +94,7 @@ export const Orders = () => {
                         <ItemImg img={item.img} />
                         <div>
                           <div>{item.name}</div>
-                          <div style={{ color: '#ec7538', fontSize: 'small' }}>
+                          <div style={style}>
                             {formatPrice(item.price * item.quantity)}
                           </div>
                         </div>
@@ -105,8 +107,12 @@ export const Orders = () => {
                 </OrderContainer>
               </OrderContainer>
             </OrderContent>
-            <DialogFooter>
-              <ConfirmButton>Pagar: {formatPrice(total)}</ConfirmButton>
+              <DialogFooter>
+                <Link to='/checkout' style={style} >
+                  <ConfirmButton onClick={handlerToggle}>
+                    Ir a Pagar: {formatPrice(total)}
+                  </ConfirmButton>
+                </Link>
             </DialogFooter>
           </>
         )}

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import imgLogo from '../../assets/logo.svg';
 import { CartIcon } from '../Cart/CartIcon';
+import { Link } from 'react-router-dom';
 
 const NavbarStyled = styled.div`
   display: flex;
@@ -13,11 +14,16 @@ const NavbarStyled = styled.div`
   width: 100%;
   z-index: 999;
   border-bottom: 1px solid #e5edef;
+  top: 0;
 `;
 
 const Logo = styled.img`
   max-width: 100px;
   height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 16px 12px;
 `;
 
 const NaviagationMenu = styled.nav`
@@ -39,7 +45,9 @@ export const Navbar = () => {
   return (
     <>
       <NavbarStyled>
-        <Logo src={imgLogo} />
+        <Link to='/'>
+          <Logo src={imgLogo} />
+        </Link>
         <NaviagationMenu>
           <CartIcon />
         </NaviagationMenu>

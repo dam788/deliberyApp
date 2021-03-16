@@ -9,11 +9,12 @@ export const GlobalStyle = createGlobalStyle`
     background-color: #fafaf8;
   }
 
-  h1,
-  h2,
-  h3 {
+  h1, h2, h3 {
     font-family: 'Roboto', sans-serif;
   }
  
+  a {
+    text-decoration: none;
+  }
 
 `;

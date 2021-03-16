@@ -8,16 +8,26 @@ import { addItems } from '../../redux/cart/cart-action';
 import { formatPrice } from '../../utils/formatPrice';
 
 const Dialog = styled.div`
-  width: 400px;
+  width: 500px;
   background-color: #fff;
   position: fixed;
   top: 150px;
   max-height: calc(100%-100px);
-  left: calc(50% - 200px);
+  left: calc(50% - 250px);
   display: flex;
   flex-direction: column;
   border-radius: 8px;
   z-index: 5;
+
+  @media (max-width: 768px) {
+    width: 400px;
+    left: calc(50% - 200px);
+  }
+
+  @media (max-width: 450px) {
+    width: 350px;
+    left: calc(50% - 175px);
+  }
 `;
 
 export const DialogShadow = styled.div`
